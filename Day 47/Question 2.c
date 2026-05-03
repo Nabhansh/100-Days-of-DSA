@@ -1,4 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
+int maxDepth(struct TreeNode* root) {
+    if (root == NULL)
+        return 0;
 
-// Maximum Depth of Binary Tree solution in C
+    int left = maxDepth(root->left);
+    int right = maxDepth(root->right);
+
+    return 1 + (left > right ? left : right);
+}
