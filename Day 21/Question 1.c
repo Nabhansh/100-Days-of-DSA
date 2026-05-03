@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define node structure
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    struct Node *head = NULL, *temp = NULL, *newNode = NULL;
+
+    for (int i = 0; i < n; i++) {
+        int val;
+        scanf("%d", &val);
+
+        // create new node
+        newNode = (struct Node*)malloc(sizeof(struct Node));
+        newNode->data = val;
+        newNode->next = NULL;
+
+        // first node
+        if (head == NULL) {
+            head = newNode;
+            temp = newNode;
+        } else {
+            temp->next = newNode;
+            temp = newNode;
+        }
+    }
+
+    // traverse and print
+    temp = head;
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+
+    return 0;
+}
