@@ -1,12 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Height of Binary Tree implementation
-int main() {
-    int n;
-    scanf("%d", &n);
-    
-    // Implementation here
-    printf("Result\n");
-    return 0;
+// Tree Node
+struct TreeNode {
+    int val;
+    struct TreeNode *left, *right;
+};
+
+// Function to calculate height
+int height(struct TreeNode* root) {
+    if (root == NULL)
+        return 0;
+
+    int leftHeight = height(root->left);
+    int rightHeight = height(root->right);
+
+    return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
 }
